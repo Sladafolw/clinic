@@ -1,0 +1,54 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "FilterDays";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <pre>Date</pre>
+            </th>
+            <th>
+                <pre>Number Room</pre>
+            </th>
+            <th>
+                <pre>Name</pre>
+            </th>
+            <th>
+                <pre>Age</pre>
+            </th>
+            <th>
+                <pre>Receipt Date</pre>
+            </th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (dynamic item in Model)
+        {
+            <tr>
+                <td>
+                    <div class="desc">@Html.Raw(item.Date) </div>
+                </td>
+                <td>  <div class="desc">@Html.Raw(item.NumberRoom) </div></td>
+                <td>
+                    <div class="desc">@Html.Raw(item.Name) </div>
+                </td>
+                <td>  <div class="desc">@Html.Raw(item.Age) </div></td>
+
+                <td>  <div class="desc">@Html.Raw(item.ReceiptDate) </div></td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>

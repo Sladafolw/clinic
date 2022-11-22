@@ -1,0 +1,27 @@
+﻿@model kurs.Models.Diagnosis
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Diagnosis</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+          NameDiagnosis
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NameDiagnosis)
+        </dd>
+    </dl>
+</div>
+<div>
+    <div class="aaa">
+         <div class="link">
+        <div class="Edit"> <a asp-action="Edit" asp-route-id="@Model?.NumberDiagnosis">Edit</a> </div>|
+       <div class="Details"><a asp-action="Index">Back to List</a></div> </div>
+    </div>
+</div>

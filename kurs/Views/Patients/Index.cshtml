@@ -1,0 +1,175 @@
+﻿@model IEnumerable<dynamic>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+@{
+    if (!string.IsNullOrEmpty(ViewBag.a))
+    {
+
+
+        <script>
+            alert('@TempData["messagee"]');
+        </script>
+
+    }
+}
+<p>
+    <div class="link">
+        <a asp-action="Create">Create New</a>
+    </div>
+</p>
+<div class="filter">
+    <form asp-controller="Patients" asp-action="Filter">
+        <p>
+            <input type="text" name="name" required />
+            <input type="submit" value="Filter by name" />
+        </p>
+    </form>
+    <div class="filter">
+        <form asp-controller="Patients" asp-action="FilterDaysWereFemale">
+            <p>
+                <input type="date" name="filter" required />
+                <input type="number" name="age" min="0" required />
+                <input type="submit" value="Filter Days Were Female" />
+            </p>
+        </form>
+    </div>
+    <form asp-controller="Patients" asp-action="FilterDays">
+        <p>
+
+            <input type="date" name="filter"  required />
+            <input type="submit" value="FilterDays">
+        </p>
+    </form>
+    <form asp-controller="Patients" asp-action="FilterMaxDays">
+        <p>
+            <input type="submit" value="FilterMaxDays">
+        </p>
+    </form>
+</div>
+<table id="myTable">
+    <thead>
+        <tr>
+            <th onclick="sortTable(0)">
+                Name
+            </th>
+            <th>
+                Age
+            </th>
+            <th>
+                Gender
+            </th>
+            <th onclick="sortTable(0)">
+                SpecialSigns
+            </th>
+            <th onclick="sortTable(0)">
+                ColorHair
+            </th>
+
+            <th>
+                Approximate Height
+            </th>
+
+
+
+        </tr>
+
+    </thead>
+
+    @foreach (dynamic item in Model)
+    {
+        <tr>
+            <td>
+                @Html.Raw( item.Name)
+            </td>
+            <td>
+                @Html.Raw(item.Age)
+            </td>
+            <td>
+                @Html.Raw( item.Gender)
+            </td>
+            <td>
+                @Html.Raw( item.SpecialSigns)
+            </td>
+            <td>
+                @Html.Raw( item.ColorHair)
+            </td>
+            <td>
+                @Html.Raw( item.ApproximateHeight)
+
+
+            </td>
+
+            <td>
+
+                <div class="link">
+                    <div class="aaa">
+                        <div class="Edit">   <a asp-action="Edit" asp-route-id="@item.CodePatient">Edit</a> </div>|
+                        <div class="Details"> <a asp-action="Details" asp-route-id="@item.CodePatient">Details</a> </div> |
+                        <div class="Delete">  <a asp-action="Delete" asp-route-id="@item.CodePatient">Delete</a></div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
+
+
+</table>
+<script>
+    function sortTable(n) {
+      var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+      table = document.getElementById("myTable");
+      switching = true;
+      //Set the sorting direction to ascending:
+      dir = "asc";
+      /*Make a loop that will continue until
+      no switching has been done:*/
+      while (switching) {
+        //start by saying: no switching is done:
+        switching = false;
+        rows = table.getElementsByTagName("TR");
+        /*Loop through all table rows (except the
+        first, which contains table headers):*/
+        for (i = 1; i < (rows.length - 1); i++) {
+          //start by saying there should be no switching:
+          shouldSwitch = false;
+          /*Get the two elements you want to compare,
+          one from current row and one from the next:*/
+          x = rows[i].getElementsByTagName("TD")[n];
+          y = rows[i + 1].getElementsByTagName("TD")[n];
+          /*check if the two rows should switch place,
+          based on the direction, asc or desc:*/
+          if (dir == "asc") {
+            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+              //if so, mark as a switch and break the loop:
+              shouldSwitch= true;
+              break;
+            }
+          } else if (dir == "desc") {
+            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+              //if so, mark as a switch and break the loop:
+              shouldSwitch = true;
+              break;
+            }
+          }
+        }
+        if (shouldSwitch) {
+          /*If a switch has been marked, make the switch
+          and mark that a switch has been done:*/
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+          //Each time a switch is done, increase this count by 1:
+          switchcount ++;
+        } else {
+          /*If no switching has been done AND the direction is "asc",
+          set the direction to "desc" and run the while loop again.*/
+          if (switchcount == 0 && dir == "asc") {
+            dir = "desc";
+            switching = true;
+          }
+        }
+      }
+    }
+</script>

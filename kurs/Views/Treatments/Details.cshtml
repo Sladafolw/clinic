@@ -1,0 +1,55 @@
+﻿@model IEnumerable<dynamic>
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+@{
+    ViewData["Title"] = "Details";
+}
+<h4>Treatment</h4>
+<h1>Details</h1>
+@foreach (var item in Model)
+{
+    <div>
+
+
+        <dl class="row">
+            <dt class="col-sm-2">
+                Receipt Date
+            </dt>
+            <dd class="col-sm-10">
+                @Html.Raw(item.ReceiptDate)
+            </dd>
+            <dt class="col-sm-2">
+                Discharge Date
+            </dt>
+            <dd class="col-sm-10">
+                @Html.Raw(item.DischargeDate)
+            </dd>
+            <dt class="col-sm-2">
+                Discharge Reason
+            </dt>
+            <dd class="col-sm-10">
+                @Html.Raw(item.DischargeReason)
+            </dd>
+            <dt class="col-sm-2">
+                How Delivered Patient
+            </dt>
+            <dd class="col-sm-10">
+                @Html.Raw(item.HowDeliveredPatient)
+            </dd>
+            <dt class="col-sm-2">
+                Name Diagnosis
+            </dt>
+            <dd class="col-sm-10">
+                @Html.Raw(item.NumberDiagnosis)
+            </dd>
+        </dl>
+    </div>
+
+    <div class="aaa">
+        <div class="link">
+            <div class="Edit">      <a asp-action="Edit" asp-route-id="@item?.TreatmentCode">Edit</a> </div>|
+            <div class="Details">
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+}

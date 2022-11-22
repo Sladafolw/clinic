@@ -1,0 +1,57 @@
+﻿
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+
+
+    @model IEnumerable<dynamic>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<head>
+
+</head>
+<body>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <pre>Name</pre>
+                </th>
+                <th>
+                    <pre>Age</pre>
+                </th>
+                <th>
+                    <pre>Diagnos</pre>
+                </th>
+
+
+
+
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (dynamic item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.Raw( item.Name)
+                    </td>
+                    <td>
+                        @Html.Raw(item.Age)
+                    </td>
+                    <td>
+                        @Html.Raw( item.Diagnos)
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+
+</body>

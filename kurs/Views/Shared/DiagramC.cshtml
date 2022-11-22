@@ -1,0 +1,33 @@
+﻿@model IEnumerable<dynamic>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Гистограмма</title>
+    <script src="https://www.google.com/jsapi"></script>
+    <script>
+        google.load("visualization", "1", {packages:["corechart"]});
+        google.setOnLoadCallback(drawChart);
+        function drawChart() {
+         var data = google.visualization.arrayToDataTable([
+          ['Дата', 'Количество'],
+         @foreach (dynamic item in Model)
+        {
+            @Html.Raw($"['{item.Date}', {item.DateCount}],")
+        }
+         ]);
+         var options = {
+          title: 'Количество выписанных пациентов по дням ',
+          hAxis: {title: 'Дата'},
+          vAxis: {title: 'Количество'}
+         };
+         var chart = new google.visualization.ColumnChart(document.getElementById('patient'));
+         chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+    <div id="patient" style="width: 500px; height: 400px;"></div>
+</body>
+</html>

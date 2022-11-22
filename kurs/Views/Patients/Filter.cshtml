@@ -1,0 +1,63 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "Filter";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <pre>Name</pre>
+            </th>
+            <th>
+                <pre>Phone</pre>
+            </th>
+            <th>
+                <pre>NumberRoom</pre>
+            </th>
+            <th>
+                <pre>@{
+                        if (ViewBag.Age != null)
+                        {
+                            <text>Age</text>
+                        }
+                    }</pre>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (dynamic item in Model)
+        {
+            <tr>
+
+                <td>
+                    <div class="desc">@Html.Raw(item.Name) </div>
+                </td>
+                <td>  <div class="desc">@Html.Raw(item.Phone) </div></td>
+
+                <td>  <div class="desc">@Html.Raw(item.NumberRoom) </div></td>
+                @{
+                    try
+                    {
+                        var f = item.Age;
+                        <td>
+                            <div class="desc">@Html.Raw(item.Age) </div>
+                        </td>
+                    }
+                    catch
+                    {
+
+                    }
+                }
+
+
+            </tr>
+        }
+    </tbody>
+</table>

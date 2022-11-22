@@ -1,0 +1,93 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+.nav-item a {
+    border-radius: 30px;
+}
+
+.nav-item a:hover {
+    background-color: darkgrey;
+    border-radius: 30px;
+  
+}
+
+
+.background{
+    width: 100%;
+    height: 100%;
+    
+    
+}
+.link a{text-decoration:none;
+        color:black;
+
+}
+.link a:hover{background-color:chartreuse;
+
+}
+.filter input[type=submit]:hover {
+    color: chartreuse;
+}
+.position{
+    position:absolute
+}
+
+table {
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th {
+    cursor: pointer;
+}
+
+th, td {
+    text-align: left;
+    padding: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+.hiden{width:50%;
+       height:50%;
+
+}
+.figurecaption
+{  text-align :center;
+    color:brown;
+}
+.name{color:lawngreen;
+
+}
+.name b:hover{color:yellow;}
+.aaa div{ display:inline;}
+.Edit a {
+    color: blue;
+    text-decoration: none;
+}
+.Details a {
+    color: yellow;
+    text-decoration: none;
+}
+.Delete a {
+    color: red;
+    text-decoration: none;
+}

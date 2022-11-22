@@ -1,0 +1,73 @@
+﻿@model IEnumerable<dynamic>
+@{
+    ViewData["Title"] = "Edit";
+}<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+<h1>Edit</h1>
+
+<h4>Treatment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div class="text-danger"></div>
+            <div class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">ReceiptDate</label>
+                <input type="date" name="ReceiptDate" class="form-control" value=@ViewBag.ReceiptDate.ToString("yyyy-MM-dd") required />
+
+            </div>
+            <div class="form-group">
+                <label class="control-label">DischargeDate</label>
+                <input type="date" name="DischargeDate" class="form-control" value=@ViewBag.DischargeDate?.ToString("yyyy-MM-dd") />
+
+            </div>
+            <div class="form-group">
+                <label class="control-label">DischargeReason</label>
+                <input name="DischargeReason" class="form-control" value=@ViewBag.DischargeReason />
+
+            </div>
+            <div class="form-group">
+                <label class="control-label">HowDeliveredPatient</label>
+                <input name="HowDeliveredPatient" class="form-control" value=@ViewBag.HowDeliveredPatient required />
+
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">NameDiagnosis</label>
+
+                <p>
+                    <select name="NameDiagnosis" class="form-control">
+                        @{
+                            foreach (dynamic f in ViewBag.NameDiagnosis)
+                            {
+                                <option name="NameDiagnosis" value=@f>@f</option>
+                            }
+                        }
+                    </select>
+                </p>
+            </div>
+
+            <div>
+                <input name="Name" class="form-control" value=@ViewBag.Name required hidden />
+                <input name="TreatmentCode" class="form-control" value=@ViewBag.TreatmentCode required hidden />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+ <div class="aaa">
+        <div class="link">
+            <div class="Details">
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

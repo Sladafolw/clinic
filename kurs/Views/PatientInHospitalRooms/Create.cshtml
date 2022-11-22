@@ -1,0 +1,60 @@
+﻿@model kurs.Models.PatientInHospitalRoom
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>PatientInHospitalRoom</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">NumberHospitalRoom </label>
+                <p>
+                    <select name="NumberHospitalRoom" class="form-control">
+                        @{
+                            foreach (dynamic f in ViewBag.NumberHospitalRoom)
+                            {
+
+                                <option name="Name" value="@f">@f</option>
+                            }
+                        }
+                    </select>
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Name </label>
+                <p>
+                    <select name="CodePatient" class="form-control">
+                        @{
+                            foreach (dynamic f in ViewBag.Patients)
+                            {
+
+                                <option name="Name" value="@f.Key">@f.Value</option>
+                            }
+                        }
+                    </select>
+                </p>
+            </div>
+            <div class="form-group">
+
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<kurs.Models.HospitalRoom>
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<head>
+    <meta charset="utf-8" />
+   
+
+</head><body>@{
+    ViewData["Title"] = "Index";
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.a))
+    {
+
+
+        <script>
+            alert('@TempData["messagee"]');
+        </script>
+
+    }
+}
+
+
+<div class="link">
+
+
+    <a asp-action="Create">Create New</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                NumberHospitalRoom
+
+            </th>
+            <th>Mobile Number Hospital Room</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(model => item.NumberHospitalRoom) </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MobileNumberHospitalRoom)
+                </td>
+                <td>
+                    <div class="link">
+                    <div class="aaa">
+                        <div class="Edit">  <a asp-action="Edit" asp-route-id="@item.NumberHospitalRoom">Edit</a> </div>|
+                        <div class="Details"><a asp-action="Details" asp-route-id="@item.NumberHospitalRoom">Details</a> </div> |
+                        <div class="Delete">  <a asp-action="Delete" asp-route-id="@item.NumberHospitalRoom">Delete</a></div>
+                    </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</body>

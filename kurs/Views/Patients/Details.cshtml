@@ -1,0 +1,56 @@
+﻿@model kurs.Models.Patient
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Patient</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SpecialSigns)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SpecialSigns)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ColorHair)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ColorHair)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApproximateHeight)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApproximateHeight)
+        </dd>
+    </dl>
+</div>
+
+    <div class="aaa">
+         <div class="link">
+        <div class="Edit">    <a asp-action="Edit" asp-route-id="@Model?.CodePatient">Edit</a> </div>|
+       <div class="Details">  <a asp-action="Index">Back to List</a></div> </div>
+    </div>

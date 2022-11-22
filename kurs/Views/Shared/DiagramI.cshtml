@@ -1,0 +1,15 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<div class="filter">
+    <form asp-controller="Diagram" asp-action="DiagramC">
+        <p>
+            <input type="date" name="begin"  required/>
+            <input type="date" name="end" required />
+            <input type="submit" value="Create Diagram" />
+        </p>
+    </form>
+</div>

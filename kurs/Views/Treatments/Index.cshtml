@@ -1,0 +1,75 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+<div class="link">
+    <a asp-action="Create">Create New</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                Name
+            </th>
+            <th>
+                Receipt Date
+            </th>
+            <th>
+                Discharge Date
+            </th>
+            <th>
+                Discharge Reason
+            </th>
+            <th>
+                How Delivered Patient
+            </th>
+
+            <th>
+                Name Diagnosis
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.Raw(item.Name)
+                </td>
+                <td>
+                    @Html.Raw(item.ReceiptDate)
+                </td>
+                <td>
+                    @Html.Raw(item.DischargeDate)
+                </td>
+                <td>
+                    @Html.Raw( item.DischargeReason)
+                </td>
+                <td>
+                    @Html.Raw(item.HowDeliveredPatient)
+                </td>
+
+                <td>
+                    @Html.Raw( item.NumberDiagnosis)
+                </td>
+                <td>
+
+                    <div class="link">
+                        <div class="aaa">
+                            <div class="Edit">    <a asp-action="Edit" asp-route-id="@item.TreatmentCode">Edit</a></div>|
+                            <div class="Details">  <a asp-action="Details" asp-route-id="@item.TreatmentCode">Details</a> </div> |
+                            <div class="Delete"><a asp-action="Delete" asp-route-id="@item.TreatmentCode">Delete</a></div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

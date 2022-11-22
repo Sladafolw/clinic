@@ -1,0 +1,39 @@
+﻿@model IEnumerable<kurs.Models.Diagnosis>
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<div class="link">
+    <a asp-action="Create">Create New</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name Diagnosis
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameDiagnosis)
+                </td>
+                <td class="link">
+                    <div class="aaa">
+                        <div class="Edit"> <a asp-action="Edit" asp-route-id="@item.NumberDiagnosis">Edit</a> </div>|
+                        <div class="Details"><a asp-action="Details" asp-route-id="@item.NumberDiagnosis">Details</a></div> |
+                        <div class="Delete"><a asp-action="Delete" asp-route-id="@item.NumberDiagnosis">Delete</a></div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

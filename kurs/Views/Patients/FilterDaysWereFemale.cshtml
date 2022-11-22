@@ -1,0 +1,117 @@
+﻿@model IEnumerable<dynamic>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+<p>
+    <div class="link">
+        <a asp-action="Create">Create New</a>
+    </div>
+</p>
+<div class="filter">
+    <form asp-controller="Patients" asp-action="Filter">
+        <p>
+            <input type="text" name="name" required />
+            <input type="submit" value="Filter by name" />
+        </p>
+    </form>
+    <div class="filter">
+        <form asp-controller="Patients" asp-action="FilterDaysWereFemale">
+            <p>
+                <input type="date" name="filter" />
+                <input type="submit" value="Filter Days Were Female" />
+            </p>
+        </form>
+    </div>
+    <form asp-controller="Patients" asp-action="FilterDays">
+        <p>
+
+            <input type="date" name="filter" />
+            <input type="submit" value="FilterDays">
+        </p>
+    </form>
+    <form asp-controller="Patients" asp-action="FilterMaxDays">
+        <p>
+            <input type="submit" value="FilterMaxDays">
+
+        </p>
+    </form>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <pre>Name</pre>
+            </th>
+            <th>
+                <pre>Age</pre>
+            </th>
+            <th>
+                <pre>Gender</pre>
+            </th>
+            <th>
+                <pre>SpecialSigns</pre>
+            </th>
+            <th>
+                <pre>ColorHair</pre>
+            </th>
+            <th>
+                <pre>ApproximateHeight</pre>
+            </th>
+            <th>
+                <pre>Date </pre>
+            </th>
+
+
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (dynamic item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.Raw( item.Name)
+                </td>
+                <td>
+                    @Html.Raw(item.Age)
+                </td>
+                <td>
+                    @Html.Raw( item.Gender)
+                </td>
+                <td>
+                    @Html.Raw( item.SpecialSigns)
+                </td>
+                <td>
+                    @Html.Raw( item.ColorHair)
+                </td>
+                <td>
+                    @Html.Raw( item.ApproximateHeight)
+                </td>
+                @{
+                    try
+                    {
+                        var f = item.DaysInHospital;
+                        <td>
+                            @Html.Raw( item.DaysInHospital)
+                        </td>
+                    }
+                    catch
+                    {
+
+                    }
+
+                }
+                <td>
+                    <div class="link">
+                        <a asp-action="Edit" asp-route-id="@item.CodePatient">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.CodePatient">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.CodePatient">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

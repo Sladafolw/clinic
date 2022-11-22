@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+    @model IEnumerable<dynamic>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<head>
+
+</head>
+<body>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <pre>Name</pre>
+                </th>
+                <th>
+                    <pre>Age</pre>
+                </th>
+                <th>
+                    <pre>Diagnos</pre>
+                </th>
+
+
+
+
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (dynamic item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.Raw( item.Name)
+                    </td>
+                    <td>
+                        @Html.Raw(item.Age)
+                    </td>
+                    <td>
+                        @Html.Raw( item.Diagnos)
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+</body>
